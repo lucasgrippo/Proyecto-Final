@@ -32,4 +32,9 @@
     
 > este comando tarda muchísimo tiempo, varias horas, así que paciencia
 
-### instalar gnuradio
+### ejecutar gnuradio-companion
+
+    cd prefix/default/
+    source ./setup_env-sh
+    
+    gnuradio-companion
