@@ -10,7 +10,6 @@
 ### administrador de paquetes para python
     apt install python-pip
 > es necesario para poder instalar pybombs y gnuradio 
-> para linux mint antes tuve que ejecutar "sudo apt install python-setuptools"
 
 ### instalar python 2.7
     apt install python2.7
@@ -18,6 +17,7 @@
 ## GNU Radio y PyBOMBS
 ### instalar pybombs (administrador de paquetes de gnuradio)
     pip install pybombs
+    > para linux mint antes tuve que ejecutar "sudo apt install python-setuptools"
 
 ### instalar recetas de pybombs
     pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr-recipes.git
