@@ -1,4 +1,4 @@
-# InstalaciÛn de GNU Radio en ubuntu desde 0
+# Instalaci√≥n de GNU Radio en ubuntu desde 0
 
 > agregar "sudo" al principio de todo
 
@@ -10,6 +10,7 @@
 ### administrador de paquetes para python
     apt install python-pip
 > es necesario para poder instalar pybombs y gnuradio 
+> para linux mint antes tuve que ejecutar "sudo apt install python-setuptools"
 
 ### instalar python 2.7
     apt install python2.7
@@ -21,8 +22,8 @@
 ### instalar recetas de pybombs
     pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr-recipes.git
 
-### creamos directorio prefix para almacenar allÌ la instalaciÛn
-#### sube un directorio, tendrÌa que ser /home
+### creamos directorio prefix para almacenar all√≠ la instalaci√≥n
+#### sube un directorio, tendr√≠a que ser /home
     cd ..
 #### y creo el directorio /prefix    
     mkdir prefix/
@@ -30,7 +31,7 @@
 ### luego en el sub-directorio /default instalamos gnuradio con gr-osmosdr
     pybombs prefix init -a default prefix/default/ -R gnuradio-default
     
-> este comando tarda muchÌsimo tiempo, varias horas, asÌ que paciencia
+> este comando tarda much√≠simo tiempo, varias horas, as√≠ que paciencia
 
 ### ejecutar gnuradio-companion
 
