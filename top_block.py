@@ -217,7 +217,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.blocks_float_to_char_0 = blocks.float_to_char(1, 127)
         self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_char*1, outputfile + "_soft.s", False)
         self.blocks_file_sink_0_0.set_unbuffered(False)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, 'output  + "_hard.s"', False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, outputfile  + "_hard.s", False)
         self.blocks_file_sink_0.set_unbuffered(False)
         self.analog_rail_ff_0 = analog.rail_ff(-1, 1)
         self.analog_agc_xx_0 = analog.agc_cc(1e-4, 1.0, 1)
@@ -264,6 +264,7 @@ class top_block(gr.top_block, Qt.QWidget):
     def set_outputfile(self, outputfile):
         self.outputfile = outputfile
         self.blocks_file_sink_0_0.open(self.outputfile + "_soft.s")
+        self.blocks_file_sink_0.open(self.outputfile  + "_hard.s")
 
     def get_symb_rate(self):
         return self.symb_rate

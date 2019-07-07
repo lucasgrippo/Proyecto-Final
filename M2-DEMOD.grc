@@ -672,7 +672,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>output  + "_hard.s"</value>
+      <value>outputfile  + "_hard.s"</value>
     </param>
     <param>
       <key>_coordinate</key>
