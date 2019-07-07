@@ -36,6 +36,6 @@
 ### ejecutar gnuradio-companion
 
     cd prefix/default/
-    source ./setup_env-sh
+    source ./setup_env.sh
     
     gnuradio-companion

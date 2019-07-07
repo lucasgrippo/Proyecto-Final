@@ -35,7 +35,7 @@ from gnuradio import qtgui
 
 class top_block(gr.top_block, Qt.QWidget):
 
-    def __init__(self, inputfile='0'):
+    def __init__(self, inputfile='', outputfile='0'):
         gr.top_block.__init__(self, "Top Block")
         Qt.QWidget.__init__(self)
         self.setWindowTitle("Top Block")
@@ -64,6 +64,7 @@ class top_block(gr.top_block, Qt.QWidget):
         # Parameters
         ##################################################
         self.inputfile = inputfile
+        self.outputfile = outputfile
 
         ##################################################
         # Variables
@@ -214,9 +215,9 @@ class top_block(gr.top_block, Qt.QWidget):
         self.blocks_pack_k_bits_bb_0 = blocks.pack_k_bits_bb(8)
         self.blocks_float_to_complex_0 = blocks.float_to_complex(1)
         self.blocks_float_to_char_0 = blocks.float_to_char(1, 127)
-        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_char*1, '/home/nacho/Desktop/METEOR M2/2-Demoduladas/soft.s', False)
+        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_char*1, outputfile + "_soft.s", False)
         self.blocks_file_sink_0_0.set_unbuffered(False)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, '/home/nacho/Desktop/METEOR M2/2-Demoduladas/hard.s', False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, 'output  + "_hard.s"', False)
         self.blocks_file_sink_0.set_unbuffered(False)
         self.analog_rail_ff_0 = analog.rail_ff(-1, 1)
         self.analog_agc_xx_0 = analog.agc_cc(1e-4, 1.0, 1)
@@ -256,6 +257,13 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_inputfile(self, inputfile):
         self.inputfile = inputfile
+
+    def get_outputfile(self):
+        return self.outputfile
+
+    def set_outputfile(self, outputfile):
+        self.outputfile = outputfile
+        self.blocks_file_sink_0_0.open(self.outputfile + "_soft.s")
 
     def get_symb_rate(self):
         return self.symb_rate
@@ -339,8 +347,11 @@ class top_block(gr.top_block, Qt.QWidget):
 def argument_parser():
     parser = OptionParser(usage="%prog: [options]", option_class=eng_option)
     parser.add_option(
-        "-i", "--inputfile", dest="inputfile", type="string", default='0',
-        help="Set 0 [default=%default]")
+        "-i", "--inputfile", dest="inputfile", type="string", default='',
+        help="Set inputfile [default=%default]")
+    parser.add_option(
+        "-o", "--outputfile", dest="outputfile", type="string", default='0',
+        help="Set outputfile [default=%default]")
     return parser
 
 
@@ -354,7 +365,7 @@ def main(top_block_cls=top_block, options=None):
         Qt.QApplication.setGraphicsSystem(style)
     qapp = Qt.QApplication(sys.argv)
 
-    tb = top_block_cls(inputfile=options.inputfile)
+    tb = top_block_cls(inputfile=options.inputfile, outputfile=options.outputfile)
     tb.start()
     tb.show()
 
