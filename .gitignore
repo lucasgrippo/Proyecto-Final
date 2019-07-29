@@ -2,3 +2,6 @@
 *.s
 *.bmp
 *.stat
+.dat
+/data
+/meteor_decoder_master
