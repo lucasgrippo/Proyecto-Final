@@ -1,7 +1,14 @@
+weather.txt
+top_block.py
+
 *.wav
 *.s
 *.bmp
 *.stat
 *.dat
+*.data
+*.preds
+
+/meteor_decoder-master
 /data
 /meteor_decoder_master

@@ -38,7 +38,7 @@
     </param>
     <param>
       <key>generate_options</key>
-      <value>qt_gui</value>
+      <value>no_gui</value>
     </param>
     <param>
       <key>hier_block_src_path</key>
@@ -101,7 +101,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -215,7 +215,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -367,7 +367,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -410,7 +410,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -672,7 +672,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>outputfile  + "_hard.s"</value>
+      <value>outputfile + "_hard.s"</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1150,7 +1150,7 @@
     </param>
     <param>
       <key>w</key>
-      <value>costas_bw</value>
+      <value>0.002</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -1221,7 +1221,7 @@
     </param>
     <param>
       <key>loop_bw</key>
-      <value>costas_bw</value>
+      <value>0.002</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -1323,7 +1323,7 @@
     </param>
     <param>
       <key>cutoff_freq</key>
-      <value>LP_cutoff</value>
+      <value>140e3</value>
     </param>
     <param>
       <key>decim</key>
@@ -1449,7 +1449,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1812,7 +1812,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>fftsize</key>
@@ -2075,7 +2075,7 @@
     <key>root_raised_cosine_filter</key>
     <param>
       <key>alpha</key>
-      <value>rrc_alpha</value>
+      <value>3</value>
     </param>
     <param>
       <key>alias</key>
