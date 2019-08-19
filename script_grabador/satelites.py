@@ -2,7 +2,7 @@ from skyfield.api import Topos, load
 from time import sleep
 
 ubicacion_estacion_terrena = Topos('-32.949025 S', '-60.671039 W')
-# Descargo archivo TLE del satelite
+stations_url = 'http://celestrak.com/NORAD/elements/weather.txt'
 
 
 def get_time_scale():
@@ -10,7 +10,6 @@ def get_time_scale():
 
 
 def init_satelites_clima():
-    stations_url = 'http://celestrak.com/NORAD/elements/weather.txt'
     satellites = load.tle(stations_url)
     return satellites
 

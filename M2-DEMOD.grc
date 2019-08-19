@@ -97,7 +97,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>140e3</value>
+      <value>145e3</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1032, 12)</value>
+      <value>(1008, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -176,7 +176,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(632, 12)</value>
+      <value>(608, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -219,7 +219,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(912, 12)</value>
+      <value>(888, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -278,7 +278,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1088, 252)</value>
+      <value>(1136, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -294,6 +294,53 @@
     </param>
   </block>
   <block>
+    <key>variable_low_pass_filter_taps</key>
+    <param>
+      <key>beta</key>
+      <value>6.76</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>cutoff_freq</key>
+      <value>140e3</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 76)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>gain</key>
+      <value>1.0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>dec_taps</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>width</key>
+      <value>15e3</value>
+    </param>
+    <param>
+      <key>win</key>
+      <value>firdes.WIN_HAMMING</value>
+    </param>
+  </block>
+  <block>
     <key>variable</key>
     <param>
       <key>comment</key>
@@ -305,7 +352,34 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 12)</value>
+      <value>(176, 76)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>decimation</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(448, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -332,7 +406,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 12)</value>
+      <value>(368, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -344,7 +418,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-150</value>
+      <value>-160</value>
     </param>
   </block>
   <block>
@@ -371,7 +445,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(800, 364)</value>
+      <value>(776, 356)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -414,7 +488,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(792, 12)</value>
+      <value>(768, 12)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -485,7 +559,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>900001</value>
+      <value>900001/decimation</value>
     </param>
   </block>
   <block>
@@ -500,7 +574,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 12)</value>
+      <value>(528, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -527,7 +601,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 12)</value>
+      <value>(272, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -562,7 +636,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 140)</value>
+      <value>(744, 220)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -621,7 +695,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(776, 564)</value>
+      <value>(776, 500)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -672,11 +746,11 @@
     </param>
     <param>
       <key>file</key>
-      <value>outputfile  + "_hard.s"</value>
+      <value>/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_03_02/2019_03_02_hard.s</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1072, 628)</value>
+      <value>(1072, 564)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -723,11 +797,11 @@
     </param>
     <param>
       <key>file</key>
-      <value>outputfile + "_soft.s"</value>
+      <value>/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_03_02/2019_03_02_soft.s</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1072, 548)</value>
+      <value>(1072, 484)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -770,7 +844,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(912, 564)</value>
+      <value>(912, 500)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -817,7 +891,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(232, 152)</value>
+      <value>(216, 232)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -860,7 +934,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(904, 644)</value>
+      <value>(912, 580)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -903,7 +977,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(400, 164)</value>
+      <value>(384, 244)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -927,7 +1001,7 @@
     </param>
     <param>
       <key>samples_per_second</key>
-      <value>samp_rate*5</value>
+      <value>samp_rate*5*decimation</value>
     </param>
     <param>
       <key>type</key>
@@ -958,7 +1032,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(760, 644)</value>
+      <value>(776, 580)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1001,11 +1075,11 @@
     </param>
     <param>
       <key>file</key>
-      <value>inputfile</value>
+      <value>/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_06_30/2019_06_30.wav</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 152)</value>
+      <value>(8, 232)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1056,7 +1130,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 644)</value>
+      <value>(552, 580)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1099,7 +1173,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 564)</value>
+      <value>(552, 500)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1138,7 +1212,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(360, 376)</value>
+      <value>(360, 368)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1201,7 +1275,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(56, 396)</value>
+      <value>(40, 356)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1257,6 +1331,61 @@
     </param>
   </block>
   <block>
+    <key>fir_filter_xxx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>decim</key>
+      <value>decimation</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(552, 236)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>fir_filter_xxx_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>samp_delay</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>taps</key>
+      <value>dec_taps</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>ccf</value>
+    </param>
+  </block>
+  <block>
     <key>parameter</key>
     <param>
       <key>alias</key>
@@ -1272,7 +1401,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 580)</value>
+      <value>(272, 76)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1304,81 +1433,6 @@
     </param>
   </block>
   <block>
-    <key>low_pass_filter</key>
-    <param>
-      <key>beta</key>
-      <value>6.76</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>cutoff_freq</key>
-      <value>LP_cutoff</value>
-    </param>
-    <param>
-      <key>decim</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>fir_filter_ccf</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(560, 116)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>gain</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>low_pass_filter_0</value>
-    </param>
-    <param>
-      <key>interp</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>width</key>
-      <value>30e3</value>
-    </param>
-    <param>
-      <key>win</key>
-      <value>firdes.WIN_HAMMING</value>
-    </param>
-  </block>
-  <block>
     <key>parameter</key>
     <param>
       <key>alias</key>
@@ -1394,7 +1448,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(104, 580)</value>
+      <value>(360, 76)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1453,7 +1507,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(600, 364)</value>
+      <value>(600, 356)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1796,7 +1850,7 @@
     </param>
     <param>
       <key>fc</key>
-      <value>0</value>
+      <value>137e6</value>
     </param>
     <param>
       <key>comment</key>
@@ -1820,7 +1874,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1112, 148)</value>
+      <value>(1096, 228)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2103,7 +2157,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(856, 124)</value>
+      <value>(880, 204)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2174,7 +2228,7 @@
   </connection>
   <connection>
     <source_block_id>blocks_throttle_0</source_block_id>
-    <sink_block_id>low_pass_filter_0</sink_block_id>
+    <sink_block_id>fir_filter_xxx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2233,7 +2287,7 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>low_pass_filter_0</source_block_id>
+    <source_block_id>fir_filter_xxx_0</source_block_id>
     <sink_block_id>analog_agc_xx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

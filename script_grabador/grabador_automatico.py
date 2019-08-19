@@ -36,4 +36,4 @@ while True:
             subproceso.terminar_script_grc(subp)
             script_esta_corriendo = False
 
-    sleep(30)
+    sleep(1)

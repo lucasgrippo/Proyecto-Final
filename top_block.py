@@ -69,21 +69,25 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
+        self.decimation = decimation = 2
         self.symb_rate = symb_rate = 72e3
-        self.samp_rate = samp_rate = 900001
+        self.samp_rate = samp_rate = 900001/decimation
         self.sps = sps = (samp_rate)/symb_rate
         self.rrc_alpha = rrc_alpha = 3
 
         self.qpsk = qpsk = digital.constellation_calcdist(([-1-1j, -1+1j, 1+1j, 1-1j]), ([0, 1, 3, 2]), 4, 1).base()
 
-        self.fft_min = fft_min = -150
+        self.fft_min = fft_min = -160
         self.fft_max = fft_max = -15
+
+        self.dec_taps = dec_taps = firdes.low_pass(1.0, samp_rate, 140e3, 15e3, firdes.WIN_HAMMING, 6.76)
+
         self.cutoff_freq = cutoff_freq = 110e3
         self.costas_bw = costas_bw = 0.002
 
         self.constellation = constellation = digital.constellation_qpsk().base()
 
-        self.LP_cutoff = LP_cutoff = 120e3
+        self.LP_cutoff = LP_cutoff = 145e3
 
         ##################################################
         # Blocks
@@ -102,19 +106,12 @@ class top_block(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(0, 1):
             self.top_grid_layout.setColumnStretch(c, 1)
-        self._LP_cutoff_range = Range(100e3, 200e3, 1e3, 120e3, 200)
-        self._LP_cutoff_win = RangeWidget(self._LP_cutoff_range, self.set_LP_cutoff, "LP_cutoff", "counter_slider", float)
-        self.top_grid_layout.addWidget(self._LP_cutoff_win, 0, 0, 1, 1)
-        for r in range(0, 1):
-            self.top_grid_layout.setRowStretch(r, 1)
-        for c in range(0, 1):
-            self.top_grid_layout.setColumnStretch(c, 1)
         self.root_raised_cosine_filter_0 = filter.fir_filter_ccf(1, firdes.root_raised_cosine(
         	1, samp_rate, symb_rate, rrc_alpha, 300))
         self.qtgui_freq_sink_x_0_0 = qtgui.freq_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
-        	0, #fc
+        	137e6, #fc
         	100e3, #bw
         	"", #name
         	1 #number of inputs
@@ -203,25 +200,32 @@ class top_block(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(1, 2):
             self.top_grid_layout.setColumnStretch(c, 1)
-        self.low_pass_filter_0 = filter.fir_filter_ccf(1, firdes.low_pass(
-        	1, samp_rate, LP_cutoff, 30e3, firdes.WIN_HAMMING, 6.76))
+        self.fir_filter_xxx_0 = filter.fir_filter_ccf(decimation, (dec_taps))
+        self.fir_filter_xxx_0.declare_sample_delay(0)
         self.digital_symbol_sync_xx_0 = digital.symbol_sync_cc(digital.TED_MUELLER_AND_MULLER, sps, costas_bw, 1.0, 1.0, 1.5, 1, digital.constellation_bpsk().base(), digital.IR_MMSE_8TAP, 128, ([]))
         self.digital_costas_loop_cc_0 = digital.costas_loop_cc(costas_bw, 4, False)
         self.digital_constellation_soft_decoder_cf_1 = digital.constellation_soft_decoder_cf(qpsk)
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(qpsk)
-        self.blocks_wavfile_source_0 = blocks.wavfile_source(inputfile, False)
+        self.blocks_wavfile_source_0 = blocks.wavfile_source('/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_06_30/2019_06_30.wav', False)
         self.blocks_unpack_k_bits_bb_0 = blocks.unpack_k_bits_bb(2)
-        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate*5,True)
+        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate*5*decimation,True)
         self.blocks_pack_k_bits_bb_0 = blocks.pack_k_bits_bb(8)
         self.blocks_float_to_complex_0 = blocks.float_to_complex(1)
         self.blocks_float_to_char_0 = blocks.float_to_char(1, 127)
-        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_char*1, outputfile + "_soft.s", False)
+        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_char*1, '/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_03_02/2019_03_02_soft.s', False)
         self.blocks_file_sink_0_0.set_unbuffered(False)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, outputfile  + "_hard.s", False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, '/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_03_02/2019_03_02_hard.s', False)
         self.blocks_file_sink_0.set_unbuffered(False)
         self.analog_rail_ff_0 = analog.rail_ff(-1, 1)
         self.analog_agc_xx_0 = analog.agc_cc(1e-4, 1.0, 1)
         self.analog_agc_xx_0.set_max_gain(4e3)
+        self._LP_cutoff_range = Range(100e3, 200e3, 1e3, 145e3, 200)
+        self._LP_cutoff_win = RangeWidget(self._LP_cutoff_range, self.set_LP_cutoff, "LP_cutoff", "counter_slider", float)
+        self.top_grid_layout.addWidget(self._LP_cutoff_win, 0, 0, 1, 1)
+        for r in range(0, 1):
+            self.top_grid_layout.setRowStretch(r, 1)
+        for c in range(0, 1):
+            self.top_grid_layout.setColumnStretch(c, 1)
 
 
 
@@ -233,7 +237,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_float_to_char_0, 0), (self.blocks_file_sink_0_0, 0))
         self.connect((self.blocks_float_to_complex_0, 0), (self.blocks_throttle_0, 0))
         self.connect((self.blocks_pack_k_bits_bb_0, 0), (self.blocks_file_sink_0, 0))
-        self.connect((self.blocks_throttle_0, 0), (self.low_pass_filter_0, 0))
+        self.connect((self.blocks_throttle_0, 0), (self.fir_filter_xxx_0, 0))
         self.connect((self.blocks_unpack_k_bits_bb_0, 0), (self.blocks_pack_k_bits_bb_0, 0))
         self.connect((self.blocks_wavfile_source_0, 0), (self.blocks_float_to_complex_0, 0))
         self.connect((self.blocks_wavfile_source_0, 1), (self.blocks_float_to_complex_0, 1))
@@ -243,7 +247,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.digital_costas_loop_cc_0, 0), (self.digital_constellation_soft_decoder_cf_1, 0))
         self.connect((self.digital_costas_loop_cc_0, 0), (self.qtgui_const_sink_x_0, 0))
         self.connect((self.digital_symbol_sync_xx_0, 0), (self.digital_costas_loop_cc_0, 0))
-        self.connect((self.low_pass_filter_0, 0), (self.analog_agc_xx_0, 0))
+        self.connect((self.fir_filter_xxx_0, 0), (self.analog_agc_xx_0, 0))
         self.connect((self.root_raised_cosine_filter_0, 0), (self.digital_symbol_sync_xx_0, 0))
         self.connect((self.root_raised_cosine_filter_0, 0), (self.qtgui_freq_sink_x_0_0, 0))
 
@@ -263,8 +267,14 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_outputfile(self, outputfile):
         self.outputfile = outputfile
-        self.blocks_file_sink_0_0.open(self.outputfile + "_soft.s")
-        self.blocks_file_sink_0.open(self.outputfile  + "_hard.s")
+
+    def get_decimation(self):
+        return self.decimation
+
+    def set_decimation(self, decimation):
+        self.decimation = decimation
+        self.set_samp_rate(900001/self.decimation)
+        self.blocks_throttle_0.set_sample_rate(self.samp_rate*5*self.decimation)
 
     def get_symb_rate(self):
         return self.symb_rate
@@ -281,8 +291,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.set_sps((self.samp_rate)/self.symb_rate)
         self.root_raised_cosine_filter_0.set_taps(firdes.root_raised_cosine(1, self.samp_rate, self.symb_rate, self.rrc_alpha, 300))
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, self.LP_cutoff, 30e3, firdes.WIN_HAMMING, 6.76))
-        self.blocks_throttle_0.set_sample_rate(self.samp_rate*5)
+        self.blocks_throttle_0.set_sample_rate(self.samp_rate*5*self.decimation)
 
     def get_sps(self):
         return self.sps
@@ -317,6 +326,13 @@ class top_block(gr.top_block, Qt.QWidget):
         self.fft_max = fft_max
         self.qtgui_freq_sink_x_0_0.set_y_axis(self.fft_min, self.fft_max)
 
+    def get_dec_taps(self):
+        return self.dec_taps
+
+    def set_dec_taps(self, dec_taps):
+        self.dec_taps = dec_taps
+        self.fir_filter_xxx_0.set_taps((self.dec_taps))
+
     def get_cutoff_freq(self):
         return self.cutoff_freq
 
@@ -342,7 +358,6 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_LP_cutoff(self, LP_cutoff):
         self.LP_cutoff = LP_cutoff
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, self.LP_cutoff, 30e3, firdes.WIN_HAMMING, 6.76))
 
 
 def argument_parser():
