@@ -69,30 +69,26 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.decimation = decimation = 2
+        self.decimation = decimation = 4
         self.symb_rate = symb_rate = 72e3
-        self.samp_rate = samp_rate = 900001/decimation
+        self.samp_rate = samp_rate = 1.8e6/decimation
         self.sps = sps = (samp_rate)/symb_rate
-        self.rrc_alpha = rrc_alpha = 3
+        self.rrc_alpha = rrc_alpha = 2.5
 
         self.qpsk = qpsk = digital.constellation_calcdist(([-1-1j, -1+1j, 1+1j, 1-1j]), ([0, 1, 3, 2]), 4, 1).base()
 
         self.fft_min = fft_min = -160
         self.fft_max = fft_max = -15
 
-        self.dec_taps = dec_taps = firdes.low_pass(1.0, samp_rate, 140e3, 15e3, firdes.WIN_HAMMING, 6.76)
+        self.dec_taps = dec_taps = firdes.low_pass(1.0, samp_rate, 22e3, 10e3, firdes.WIN_HAMMING, 6.76)
 
         self.cutoff_freq = cutoff_freq = 110e3
         self.costas_bw = costas_bw = 0.002
 
-        self.constellation = constellation = digital.constellation_qpsk().base()
-
-        self.LP_cutoff = LP_cutoff = 145e3
-
         ##################################################
         # Blocks
         ##################################################
-        self._rrc_alpha_range = Range(0.1, 5, 0.1, 3, 200)
+        self._rrc_alpha_range = Range(0.1, 5, 0.1, 2.5, 200)
         self._rrc_alpha_win = RangeWidget(self._rrc_alpha_range, self.set_rrc_alpha, "rrc_alpha", "counter_slider", float)
         self.top_grid_layout.addWidget(self._rrc_alpha_win, 0, 1, 1, 1)
         for r in range(0, 1):
@@ -101,8 +97,8 @@ class top_block(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setColumnStretch(c, 1)
         self._costas_bw_range = Range(0.0001, 0.01, 0.0001, 0.002, 200)
         self._costas_bw_win = RangeWidget(self._costas_bw_range, self.set_costas_bw, "costas_bw", "counter_slider", float)
-        self.top_grid_layout.addWidget(self._costas_bw_win, 1, 0, 1, 1)
-        for r in range(1, 2):
+        self.top_grid_layout.addWidget(self._costas_bw_win, 0, 0, 1, 1)
+        for r in range(0, 1):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(0, 1):
             self.top_grid_layout.setColumnStretch(c, 1)
@@ -111,7 +107,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_0_0 = qtgui.freq_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
-        	137e6, #fc
+        	137.1e6, #fc
         	100e3, #bw
         	"", #name
         	1 #number of inputs
@@ -206,26 +202,19 @@ class top_block(gr.top_block, Qt.QWidget):
         self.digital_costas_loop_cc_0 = digital.costas_loop_cc(costas_bw, 4, False)
         self.digital_constellation_soft_decoder_cf_1 = digital.constellation_soft_decoder_cf(qpsk)
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(qpsk)
-        self.blocks_wavfile_source_0 = blocks.wavfile_source('/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_06_30/2019_06_30.wav', False)
+        self.blocks_wavfile_source_0 = blocks.wavfile_source('/media/nacho/Chupapija/SDRSharp_20190825_035657Z_137100kHz_IQ.wav', False)
         self.blocks_unpack_k_bits_bb_0 = blocks.unpack_k_bits_bb(2)
-        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate*5*decimation,True)
+        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate*1*decimation,True)
         self.blocks_pack_k_bits_bb_0 = blocks.pack_k_bits_bb(8)
         self.blocks_float_to_complex_0 = blocks.float_to_complex(1)
         self.blocks_float_to_char_0 = blocks.float_to_char(1, 127)
-        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_char*1, '/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_03_02/2019_03_02_soft.s', False)
+        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_char*1, '/media/nacho/Chupapija/SDRSharp_20190825_035657Z_137100kHz_IQ_soft.s', False)
         self.blocks_file_sink_0_0.set_unbuffered(False)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, '/home/nacho/Desktop/METEOR M2/5-Repo/Proyecto-Final/data/2019_03_02/2019_03_02_hard.s', False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, '/media/nacho/Chupapija/SDRSharp_20190825_040237Z_137100kHz_IQ_hard.s', False)
         self.blocks_file_sink_0.set_unbuffered(False)
         self.analog_rail_ff_0 = analog.rail_ff(-1, 1)
         self.analog_agc_xx_0 = analog.agc_cc(1e-4, 1.0, 1)
         self.analog_agc_xx_0.set_max_gain(4e3)
-        self._LP_cutoff_range = Range(100e3, 200e3, 1e3, 145e3, 200)
-        self._LP_cutoff_win = RangeWidget(self._LP_cutoff_range, self.set_LP_cutoff, "LP_cutoff", "counter_slider", float)
-        self.top_grid_layout.addWidget(self._LP_cutoff_win, 0, 0, 1, 1)
-        for r in range(0, 1):
-            self.top_grid_layout.setRowStretch(r, 1)
-        for c in range(0, 1):
-            self.top_grid_layout.setColumnStretch(c, 1)
 
 
 
@@ -273,8 +262,8 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_decimation(self, decimation):
         self.decimation = decimation
-        self.set_samp_rate(900001/self.decimation)
-        self.blocks_throttle_0.set_sample_rate(self.samp_rate*5*self.decimation)
+        self.set_samp_rate(1.8e6/self.decimation)
+        self.blocks_throttle_0.set_sample_rate(self.samp_rate*1*self.decimation)
 
     def get_symb_rate(self):
         return self.symb_rate
@@ -291,7 +280,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.set_sps((self.samp_rate)/self.symb_rate)
         self.root_raised_cosine_filter_0.set_taps(firdes.root_raised_cosine(1, self.samp_rate, self.symb_rate, self.rrc_alpha, 300))
-        self.blocks_throttle_0.set_sample_rate(self.samp_rate*5*self.decimation)
+        self.blocks_throttle_0.set_sample_rate(self.samp_rate*1*self.decimation)
 
     def get_sps(self):
         return self.sps
@@ -346,18 +335,6 @@ class top_block(gr.top_block, Qt.QWidget):
         self.costas_bw = costas_bw
         self.digital_symbol_sync_xx_0.set_loop_bandwidth(self.costas_bw)
         self.digital_costas_loop_cc_0.set_loop_bandwidth(self.costas_bw)
-
-    def get_constellation(self):
-        return self.constellation
-
-    def set_constellation(self, constellation):
-        self.constellation = constellation
-
-    def get_LP_cutoff(self):
-        return self.LP_cutoff
-
-    def set_LP_cutoff(self, LP_cutoff):
-        self.LP_cutoff = LP_cutoff
 
 
 def argument_parser():
