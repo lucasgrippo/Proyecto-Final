@@ -10,7 +10,7 @@
     </param>
     <param>
       <key>window_size</key>
-      <value></value>
+      <value>2048,2048</value>
     </param>
     <param>
       <key>category</key>
@@ -179,7 +179,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(648, 516)</value>
+      <value>(424, 500)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -191,7 +191,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>1</value>
+      <value>2</value>
     </param>
   </block>
   <block>
@@ -260,7 +260,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 516)</value>
+      <value>(504, 500)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -272,7 +272,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>1</value>
+      <value>0.002</value>
     </param>
   </block>
   <block>
@@ -299,7 +299,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(192, 732)</value>
+      <value>(80, 500)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -482,7 +482,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(568, 516)</value>
+      <value>(344, 500)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -517,7 +517,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(240, 188)</value>
+      <value>(432, 188)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -576,7 +576,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 604)</value>
+      <value>(424, 636)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -631,7 +631,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 668)</value>
+      <value>(704, 700)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -678,11 +678,11 @@
     </param>
     <param>
       <key>file</key>
-      <value>/home/nacho/Desktop/Proyecto-Final/data/2019_09_14.s</value>
+      <value>/media/nacho/OS/Grabaciones/2019_10_24.s</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 588)</value>
+      <value>(712, 620)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -725,7 +725,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(560, 604)</value>
+      <value>(560, 636)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -772,7 +772,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 684)</value>
+      <value>(552, 716)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -815,7 +815,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(416, 684)</value>
+      <value>(416, 716)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -862,7 +862,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(192, 684)</value>
+      <value>(192, 716)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -905,7 +905,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(192, 604)</value>
+      <value>(192, 636)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1078,7 +1078,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 748)</value>
+      <value>(744, 524)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1141,7 +1141,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>1,0</value>
+      <value>0,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1744,11 +1744,11 @@
     </param>
     <param>
       <key>ymax</key>
-      <value>0</value>
+      <value>20</value>
     </param>
     <param>
       <key>ymin</key>
-      <value>-100</value>
+      <value>-140</value>
     </param>
     <param>
       <key>units</key>
@@ -2132,7 +2132,7 @@
     </param>
     <param>
       <key>bb_gain0</key>
-      <value>20</value>
+      <value>40</value>
     </param>
     <param>
       <key>bw0</key>
@@ -2140,7 +2140,7 @@
     </param>
     <param>
       <key>dc_offset_mode0</key>
-      <value>1</value>
+      <value>2</value>
     </param>
     <param>
       <key>corr0</key>
@@ -2156,15 +2156,15 @@
     </param>
     <param>
       <key>if_gain0</key>
-      <value>20</value>
+      <value>40</value>
     </param>
     <param>
       <key>iq_balance_mode0</key>
-      <value>1</value>
+      <value>2</value>
     </param>
     <param>
       <key>gain0</key>
-      <value>30</value>
+      <value>40</value>
     </param>
     <param>
       <key>ant10</key>
@@ -3416,7 +3416,7 @@
     </param>
     <param>
       <key>args</key>
-      <value>rtl=0,bias=0</value>
+      <value>rtl=0,bias=1</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -3620,7 +3620,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 604)</value>
+      <value>(8, 636)</value>
     </param>
     <param>
       <key>_rotation</key>
